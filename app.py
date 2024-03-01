@@ -9,9 +9,9 @@ def exibir_nome_do_programa():
     print('Sabor Express\n')
 
 def exibir_opcoes():
-    print('1 - Cadastrar restautante')
-    print('2 - Listar restaurante')
-    print('3 - Ativar restautante')
+    print('1 - Cadastrar restaurante')
+    print('2 - Listar restaurantes')
+    print('3 - Ativar restaurantes')
     print('4 - Sair\n')
 
 ## em python nao precisa definir o tipo de uma variavel antes de usa-la
@@ -26,28 +26,97 @@ def finalizar_app():
     print('Finalizando o app\n')
 
 
+def opcao_invalida():
+    print('Opção Inválida!\n')
+    input('Digite uma tecla para voltar ao menu principal')
+    main()
+    
+
+
 #por padrão,o python define os dados de entrada do input como string
 #convertando p int
 def escolher_opcao():
 
-    opcao_escolhida = int(input('Ecolha uma opção :'))
+    try: 
+        opcao_escolhida = int(input('Ecolha uma opção :'))
 
-    if opcao_escolhida == 1:
-        print('Cadastrar restaurante')
-    elif opcao_escolhida == 2:
-        print('Listar restaurantes')
-    elif opcao_escolhida == 3:
-        print('Ativar restaurantes')
+        if opcao_escolhida == 1:
+            print('Cadastrar restaurante')
+        elif opcao_escolhida == 2:
+            print('Listar restaurantes')
+        elif opcao_escolhida == 3:
+            print('Ativar restaurantes')
+        elif opcao_escolhida == 4:
+            finalizar_app()    
+        else:
+            opcao_invalida()
+
+    except: opcao_invalida()
+ 
+
+
+def escolha_um_numero():
+
+    numero_escolhido = int(input('Escolha um número , mostrarei se é impar ou par\n')) 
+
+    if numero_escolhido % 2  == 0:
+       print(f'O {numero_escolhido} é par')
     else:
-        finalizar_app()
+        print(f'O {numero_escolhido} é impar')    
+        
+def validacao_login():    
+
+    usuario_correto = "alura"
+    senha_correta = "alura123"
+
+    usuario = input("Digite o nome de usuário: ")
+    senha = input("Digite a senha: ")
+
+    if usuario == usuario_correto and senha == senha_correta:
+        print("Login bem sucedido!")
+    else:
+        print("Credenciais inválidas. Tente novamente.")
+    
+
+
+
 
 #funcao que executa todas funcoes criadas 
+#def main é onde starta o programa,sendo esse o arquivo principal
+#todas funcoes q precisam ser executadas precisam ficar dentro da funcao main
 def main():
+    os.system('cls')
     exibir_nome_do_programa()
     exibir_opcoes()
     escolher_opcao()
 if __name__ == '__main__' :
     main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
