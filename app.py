@@ -1,12 +1,14 @@
-#python usamos print('') 
-
-#print('hello python')
-
 # import da biblioteca
 import os
 
+#python tbm tem a tuplas,semelhante a array 
+##lista de restaurantes
+restaurantes = []
+
+
 def exibir_nome_do_programa():  
     print('Sabor Express\n')
+
 
 def exibir_opcoes():
     print('1 - Cadastrar restaurante')
@@ -15,9 +17,8 @@ def exibir_opcoes():
     print('4 - Sair\n')
 
 ## em python nao precisa definir o tipo de uma variavel antes de usa-la
-##e o método snake_case para variáveis,funções e métodos
+##é recomendavel usar o método snake_case para variáveis,funções e métodos
 
-#opcao_escolhida = input('Escolha uma opção:')
 
 ##def é uma function
 #função para quando escolher a opcao 4 limpar o app
@@ -25,12 +26,22 @@ def finalizar_app():
     os.system('cls')
     print('Finalizando o app\n')
 
-
+#função para retornar erro quando opção for invalida
 def opcao_invalida():
     print('Opção Inválida!\n')
     input('Digite uma tecla para voltar ao menu principal')
     main()
     
+# função para cadastrar um novo restaurante, e adicionar esse novo registro na lista/array de restaurantes
+def cadastrar_novo_restaurante():
+    os.system('cls')
+    print(' *** Cadastro de novos restaurantes *** ')
+    nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
+    restaurantes.append(nome_do_restaurante)
+    print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso')
+    input('Digite uma tecla para voltar ao menu principal.')
+    main()
+
 
 
 #por padrão,o python define os dados de entrada do input como string
@@ -41,7 +52,7 @@ def escolher_opcao():
         opcao_escolhida = int(input('Ecolha uma opção :'))
 
         if opcao_escolhida == 1:
-            print('Cadastrar restaurante')
+            cadastrar_novo_restaurante()
         elif opcao_escolhida == 2:
             print('Listar restaurantes')
         elif opcao_escolhida == 3:
