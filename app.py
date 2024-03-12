@@ -3,7 +3,7 @@ import os
 
 #python tbm tem a tuplas,semelhante a array 
 ##lista de restaurantes
-restaurantes = []
+restaurantes = ['Pizza', 'Hamburguer']
 
 
 def exibir_nome_do_programa():  
@@ -23,25 +23,43 @@ def exibir_opcoes():
 ##def é uma function
 #função para quando escolher a opcao 4 limpar o app
 def finalizar_app():
-    os.system('cls')
-    print('Finalizando o app\n')
+    exibir_subtitulo('Finalizar app')
+
+def voltar_ao_menu_principal():
+    input('\nDigite uma tecla para voltar ao menu principal')
+    main()
+
 
 #função para retornar erro quando opção for invalida
 def opcao_invalida():
     print('Opção Inválida!\n')
-    input('Digite uma tecla para voltar ao menu principal')
-    main()
+    voltar_ao_menu_principal()
+
     
+def exibir_subtitulo(texto):
+    os.system('cls') 
+    print(texto)
+    print()
+
+
+
 # função para cadastrar um novo restaurante, e adicionar esse novo registro na lista/array de restaurantes
 def cadastrar_novo_restaurante():
-    os.system('cls')
-    print(' *** Cadastro de novos restaurantes *** ')
+    exibir_subtitulo('*** Cadastro de novos restaurantes **')
     nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
     restaurantes.append(nome_do_restaurante)
     print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso')
-    input('Digite uma tecla para voltar ao menu principal.')
-    main()
+    voltar_ao_menu_principal()
 
+def listar_restaurantes():
+
+    exibir_subtitulo('Listando restaurantes')
+    #para cada restaurante na lista exibir o nome do restaurante
+    for restaurante in restaurantes:
+        print(f'.{restaurante}')
+
+    voltar_ao_menu_principal()
+    
 
 
 #por padrão,o python define os dados de entrada do input como string
@@ -54,7 +72,7 @@ def escolher_opcao():
         if opcao_escolhida == 1:
             cadastrar_novo_restaurante()
         elif opcao_escolhida == 2:
-            print('Listar restaurantes')
+            listar_restaurantes()
         elif opcao_escolhida == 3:
             print('Ativar restaurantes')
         elif opcao_escolhida == 4:
